@@ -1,0 +1,21 @@
+<#UsingNucleo#>
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+namespace <#NameSpace#>.Model
+{
+    
+	public class <#Tabela#>Collection : Collection<<#Tabela#>>
+	{
+	}
+
+	public class <#TabelaConstrutor#>
+	{
+		public <#Tabela#>()
+		{ }
+		
+		<#PropriedadesPrivados#>
+
+		<#PropriedadesPublicos#>
+	}
+}
