@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace AutoCrud
 {
@@ -46,6 +48,10 @@ namespace AutoCrud
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
+
+            //Cria Pasta projeto
+            Utils.CriarPastaProjeto(txtNameSpace.Text);
+
             //Recuperar tabelas selecionadas
 
             if (!chkInfo.Checked && !chkDal.Checked && !chkBll.Checked)
@@ -135,5 +141,7 @@ namespace AutoCrud
                 throw;
             }
         }
+
+        
     }
 }

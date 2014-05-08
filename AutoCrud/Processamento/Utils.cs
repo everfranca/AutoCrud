@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -155,6 +157,90 @@ namespace AutoCrud.Processamento
             }
 
             return tipo;
+        }
+
+        public static void CriarPastaProjeto(string nameSpace)
+        {
+            string diretorioProjeto = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nameSpace;
+            try
+            {
+                if (!Directory.Exists(diretorioProjeto))
+                    Directory.CreateDirectory(diretorioProjeto);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void CriarPasta(string nomeTabela, TipoProcessamento TipoProcessamento)
+        {
+            string diretorio = string.Empty;
+            string tipo = string.Empty;
+
+            try
+            {
+                switch (TipoProcessamento)
+                {
+                    case TipoProcessamento.Info:
+                        tipo = "Info";
+                        break;
+                    case TipoProcessamento.Dal:
+                        tipo = "Dal";
+                        break;
+                    case TipoProcessamento.Bll:
+                        tipo = "Bll";
+                        break;
+                }
+                if (nomeTabela != null)
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+                else
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeTabela + "." + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+
+                if (!Directory.Exists(diretorio))
+                    Directory.CreateDirectory(diretorio);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static string CriarPastaComRetorno(string nomeTabela, TipoProcessamento TipoProcessamento)
+        {
+            string diretorio = string.Empty;
+            string tipo = string.Empty;
+
+            try
+            {
+                switch (TipoProcessamento)
+                {
+                    case TipoProcessamento.Info:
+                        tipo = "Info";
+                        break;
+                    case TipoProcessamento.Dal:
+                        tipo = "Dal";
+                        break;
+                    case TipoProcessamento.Bll:
+                        tipo = "Bll";
+                        break;
+                }
+                if (nomeTabela != null)
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+                else
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeTabela + "." + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+
+                if (!Directory.Exists(diretorio))
+                    Directory.CreateDirectory(diretorio);
+                return diretorio;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

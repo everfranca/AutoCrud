@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,6 +75,7 @@
     <Compile Include="Model\ColunaInfo.cs" />
     <Compile Include="Model\OpcoesAvancadasInfo.cs" />
     <Compile Include="Model\TabelaInfo.cs" />
+    <Compile Include="Processamento\ProcessamentoEnum.cs" />
     <Compile Include="Processamento\ProcessarInfo.cs" />
     <Compile Include="Processamento\Utils.cs" />
     <Compile Include="Program.cs" />
@@ -96,6 +98,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
