@@ -14,8 +14,8 @@ namespace <#NameSpace#>.Model
 		public <#Tabela#>()
 		{ }
 		
-		<#PropriedadesPrivados#>
+		<#PrivateFields#>
 
-		<#PropriedadesPublicos#>
+		<#PublicFields#>
 	}
 }

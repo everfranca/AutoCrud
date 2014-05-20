@@ -113,6 +113,8 @@
   <ItemGroup>
     <Content Include="Arquivos\Info.txt" />
     <Content Include="Arquivos\InfoCollection.txt" />
+    <Content Include="Arquivos\InfoPrivateProperty.txt" />
+    <Content Include="Arquivos\InfoPublicProperty.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
