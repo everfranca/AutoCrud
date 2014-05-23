@@ -15,7 +15,7 @@ namespace AutoCrud.Processamento
         const string fileInfoPrivateFields = "..\\..\\Arquivos\\InfoPrivateProperty.txt";
         const string fileInfoPublicFields = "..\\..\\Arquivos\\InfoPublicProperty.txt";
         const string filePastaArquivo = @"C:\ProgramData\AutoCrud";
-        const string pathArquivoXml = @"C:\ProgramData\AutoCrud\AutoCrudInformation.xm";
+        const string pathArquivoXml = @"C:\ProgramData\AutoCrud\AutoCrudInformation.xml";
 
         public static void ProcessarClasseInfo(TabelaInfo tabelaInfo)
         {
