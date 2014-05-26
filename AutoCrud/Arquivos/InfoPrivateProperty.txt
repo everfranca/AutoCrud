@@ -1,1 +1,1 @@
-		private <#type#> <#field#> ;
+		private <#type#> <#field#>;

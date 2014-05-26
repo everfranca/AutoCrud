@@ -208,7 +208,7 @@ namespace AutoCrud.Processamento
 
         }
 
-        public static string CriarPastaComRetorno(string nomeTabela, TipoProcessamento TipoProcessamento)
+        public static string CriarPastaComRetorno(string nomeTabela, TipoProcessamento TipoProcessamento, string nomeClasse)
         {
             string diretorio = string.Empty;
             string tipo = string.Empty;
@@ -230,7 +230,7 @@ namespace AutoCrud.Processamento
                 if (nomeTabela != null)
                     diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
                 else
-                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeTabela + "." + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeClasse + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
 
                 if (!Directory.Exists(diretorio))
                     Directory.CreateDirectory(diretorio);

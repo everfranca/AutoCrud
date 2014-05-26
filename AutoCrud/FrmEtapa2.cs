@@ -108,7 +108,6 @@ namespace AutoCrud
                 }
             }
         }
-
         private void btnOpcoesAvancadas_Click(object sender, EventArgs e)
         {
             FrmOpçõesAvancadas frmOpcoesAvancadas = new FrmOpçõesAvancadas();

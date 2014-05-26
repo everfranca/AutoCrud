@@ -31,13 +31,12 @@ namespace AutoCrud.Processamento
 
                 if (opcoesAvancadasInfo.ApenasArquivos)
                 {
-                    caminhoDiretorio = Utils.CriarPastaComRetorno(null, TipoProcessamento.Info) + @"\" + tabelaInfo.Nome + ".Info.cs";
+                    caminhoDiretorio = Utils.CriarPastaComRetorno(null, TipoProcessamento.Info, tabelaInfo.Nome) + @"\" + tabelaInfo.Nome + "Info.cs";
                     using (StreamWriter sw = new StreamWriter(caminhoDiretorio))
                     {
                         sw.Write(sbArquivo);
                     }
                 }
-
             }
         }
 
