@@ -1,4 +1,4 @@
-		public <#type#> <#PublicField#>;
+		public <#type#> <#PublicField#>
         {
             get { return <#field#>; }
             set { <#field#> = value; }

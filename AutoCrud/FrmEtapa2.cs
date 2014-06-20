@@ -99,6 +99,7 @@ namespace AutoCrud
                     }
                     if (chkDal.Checked)
                     {
+                        ProcessarDal.ProcessarClasseDal(tabelaInfo);
                         //Gerar Dal
                     }
                     if (chkBll.Checked)
@@ -106,6 +107,8 @@ namespace AutoCrud
                         //Gerar Bll
                     }
                 }
+
+                MessageBox.Show("Processamento Concluído!");
             }
         }
         private void btnOpcoesAvancadas_Click(object sender, EventArgs e)

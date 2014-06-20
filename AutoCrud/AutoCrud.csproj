@@ -75,6 +75,7 @@
     <Compile Include="Model\ColunaInfo.cs" />
     <Compile Include="Model\OpcoesAvancadasInfo.cs" />
     <Compile Include="Model\TabelaInfo.cs" />
+    <Compile Include="Processamento\ProcessarDal.cs" />
     <Compile Include="Processamento\ProcessamentoEnum.cs" />
     <Compile Include="Processamento\ProcessarInfo.cs" />
     <Compile Include="Processamento\Utils.cs" />

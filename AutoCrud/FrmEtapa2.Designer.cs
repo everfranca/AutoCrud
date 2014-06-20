@@ -108,7 +108,7 @@
             // btnOpcoesAvancadas
             // 
             this.btnOpcoesAvancadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpcoesAvancadas.Location = new System.Drawing.Point(226, 38);
+            this.btnOpcoesAvancadas.Location = new System.Drawing.Point(350, 38);
             this.btnOpcoesAvancadas.Name = "btnOpcoesAvancadas";
             this.btnOpcoesAvancadas.Size = new System.Drawing.Size(121, 50);
             this.btnOpcoesAvancadas.TabIndex = 3;
@@ -165,7 +165,7 @@
             // btnGerar
             // 
             this.btnGerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerar.Location = new System.Drawing.Point(353, 38);
+            this.btnGerar.Location = new System.Drawing.Point(223, 38);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(121, 50);
             this.btnGerar.TabIndex = 3;

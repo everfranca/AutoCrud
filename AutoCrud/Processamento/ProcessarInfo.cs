@@ -24,7 +24,7 @@ namespace AutoCrud.Processamento
             OpcoesAvancadasInfo opcoesAvancadasInfo = new OpcoesAvancadasInfo();
 
             //Recuperar informações das configurações avançadas
-            opcoesAvancadasInfo = RecuperarOpcoesAvancadas();
+            opcoesAvancadasInfo = Utils.RecuperarOpcoesAvancadas();
             if (opcoesAvancadasInfo != null)
             {
                 sbArquivo.Append(CriarAquivo(tabelaInfo, opcoesAvancadasInfo));
@@ -58,7 +58,7 @@ namespace AutoCrud.Processamento
             if (opcoesAvancadasInfo.UtilizarNucleo)
             {
                 sbAux = sb.Replace("<#UsingNucleo#>", "using Nucleo;");
-                sbAux = sb.Replace("<#TabelaConstrutor#>", tabelaInfo.Nome + ": BaseInfo");
+                sbAux = sb.Replace("<#TabelaConstrutor#>", tabelaInfo.Nome + " : BaseInfo");
             }
             else
             {
@@ -66,7 +66,7 @@ namespace AutoCrud.Processamento
                 sbAux = sb.Replace("<#TabelaConstrutor#>", tabelaInfo.Nome);
             }
 
-            sbAux = sb.Replace("<#NameSpace#>", "");
+            sbAux = sb.Replace("<#NameSpace#>", string.Empty);
             sbAux = sb.Replace("<#Tabela#>", tabelaInfo.Nome);
 
             var propriedadesPrivadas = RetornaPropriedadesPrivadas(tabelaInfo, opcoesAvancadasInfo.CriarCollectionPorFK);
@@ -188,29 +188,6 @@ namespace AutoCrud.Processamento
             return sb.ToString();
         }
 
-        public static OpcoesAvancadasInfo RecuperarOpcoesAvancadas()
-        {
-            OpcoesAvancadasInfo opcoesAvancadasInfo = new OpcoesAvancadasInfo();
-
-            if (Directory.Exists(filePastaArquivo))
-            {
-                if (File.Exists(pathArquivoXml))
-                {
-                    using (StreamReader sw = new StreamReader(pathArquivoXml))
-                    {
-                        var xml = new System.Xml.Serialization.XmlSerializer(typeof(OpcoesAvancadasInfo));
-                        try
-                        {
-                            opcoesAvancadasInfo = (OpcoesAvancadasInfo)xml.Deserialize(sw);
-                        }
-                        catch (Exception)
-                        {
-                            throw;
-                        }
-                    }
-                }
-            }
-            return opcoesAvancadasInfo;
-        }
+        
     }
 }

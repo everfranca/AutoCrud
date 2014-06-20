@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoCrud.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -9,6 +10,10 @@ namespace AutoCrud.Processamento
 {
     public static class Utils
     {
+
+        const string filePastaArquivo = @"C:\ProgramData\AutoCrud";
+        const string pathArquivoXml = @"C:\ProgramData\AutoCrud\AutoCrudInformation.xml";
+
         public static string RetornaTipo(string tipoBanco)
         {
             if (tipoBanco.Contains("identity"))
@@ -158,6 +163,40 @@ namespace AutoCrud.Processamento
 
             return tipo;
         }
+        public static string CriarPastaComRetorno(string nomeTabela, TipoProcessamento TipoProcessamento, string nomeClasse)
+        {
+            string diretorio = string.Empty;
+            string tipo = string.Empty;
+
+            try
+            {
+                switch (TipoProcessamento)
+                {
+                    case TipoProcessamento.Info:
+                        tipo = "Info";
+                        break;
+                    case TipoProcessamento.Dal:
+                        tipo = "Dal";
+                        break;
+                    case TipoProcessamento.Bll:
+                        tipo = "Bll";
+                        break;
+                }
+                if (nomeTabela != null)
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+                else
+                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeClasse + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
+
+                if (!Directory.Exists(diretorio))
+                    Directory.CreateDirectory(diretorio);
+                return diretorio;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
 
         public static void CriarPastaProjeto(string nameSpace)
         {
@@ -173,7 +212,6 @@ namespace AutoCrud.Processamento
                 throw;
             }
         }
-
         public static void CriarPasta(string nomeTabela, TipoProcessamento TipoProcessamento)
         {
             string diretorio = string.Empty;
@@ -208,39 +246,29 @@ namespace AutoCrud.Processamento
 
         }
 
-        public static string CriarPastaComRetorno(string nomeTabela, TipoProcessamento TipoProcessamento, string nomeClasse)
+        public static OpcoesAvancadasInfo RecuperarOpcoesAvancadas()
         {
-            string diretorio = string.Empty;
-            string tipo = string.Empty;
+            OpcoesAvancadasInfo opcoesAvancadasInfo = new OpcoesAvancadasInfo();
 
-            try
+            if (Directory.Exists(filePastaArquivo))
             {
-                switch (TipoProcessamento)
+                if (File.Exists(pathArquivoXml))
                 {
-                    case TipoProcessamento.Info:
-                        tipo = "Info";
-                        break;
-                    case TipoProcessamento.Dal:
-                        tipo = "Dal";
-                        break;
-                    case TipoProcessamento.Bll:
-                        tipo = "Bll";
-                        break;
+                    using (StreamReader sw = new StreamReader(pathArquivoXml))
+                    {
+                        var xml = new System.Xml.Serialization.XmlSerializer(typeof(OpcoesAvancadasInfo));
+                        try
+                        {
+                            opcoesAvancadasInfo = (OpcoesAvancadasInfo)xml.Deserialize(sw);
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
                 }
-                if (nomeTabela != null)
-                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
-                else
-                    diretorio = ConfigurationManager.AppSettings["DiretorioRaiz"].ToString() + @"\" + nomeClasse + ConfigurationManager.AppSettings["NomeDiretorio" + tipo].ToString();
-
-                if (!Directory.Exists(diretorio))
-                    Directory.CreateDirectory(diretorio);
-                return diretorio;
             }
-            catch (Exception)
-            {
-                throw;
-            }
-
+            return opcoesAvancadasInfo;
         }
     }
 }
